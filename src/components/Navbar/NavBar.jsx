@@ -1,46 +1,51 @@
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import "./Navbar.css";
-import CartWidget from "../CartWidget/CartWidget";
-import goldenBrand from "../../assets/golden-brand.png";
+import "./NavBar.css"
+import Container from "react-bootstrap/Container"
+import Nav from "react-bootstrap/Nav"
+import Navbar from "react-bootstrap/Navbar"
+import NavDropdown from "react-bootstrap/NavDropdown"
+import CartWidget from "../CartWidget/CartWidget"
+// import goldenBrand from "../../../public/assets/img/golden-brand.png"
+/* <img className="regen-brand" src={goldenBrand} alt="Golden Brand" /> */
+/* regen. */
+
+import { NavLink, Link } from "react-router-dom"
 
 function NavBar() {
-  return (
-    <Navbar bg="light" expand="lg">
-      <Container className="nav-container">
-        <Navbar.Brand href="#home">
-          {"regen."}
-
-          <img className="regen-brand" src={goldenBrand} alt="Golden Brand" />
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto collapse-nav">
-            <Nav.Link className="power-red" href="#home">
-              power
-            </Nav.Link>
-            <Nav.Link className="energy-blue" href="#link">
-              energy
-            </Nav.Link>
-            <NavDropdown
-              className="vibe-green"
-              title="vibe"
-              id="basic-nav-dropdown"
-            >
-              <NavDropdown.Item href="#action/3.1">1</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">2</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">3</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">4 </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
-        <CartWidget />
-      </Container>
-    </Navbar>
-  );
+    return (
+        <Navbar bg="light" expand="lg">
+            <Container className="nav-container">
+                <Navbar.Brand as={Link} to="/" className="regen-brand">
+                    <p>regen.</p>
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="me-auto collapse-nav">
+                        <NavLink to={`/category/2`} className="power-red">
+                            power
+                        </NavLink>
+                        <NavLink to={`/category/3`} className="energy-blue">
+                            energy
+                        </NavLink>
+                        <NavDropdown className="vibe-green" title="vibe" id="basic-nav-dropdown">
+                            <NavDropdown.Item as={NavLink} to="/action/3.1">
+                                1
+                            </NavDropdown.Item>
+                            <NavDropdown.Item as={NavLink} to="/action/3.2">
+                                2
+                            </NavDropdown.Item>
+                            <NavDropdown.Item as={NavLink} to="/action/3.3">
+                                3
+                            </NavDropdown.Item>
+                            <NavDropdown.Item as={NavLink} to="/action/3.4">
+                                4{" "}
+                            </NavDropdown.Item>
+                        </NavDropdown>
+                    </Nav>
+                </Navbar.Collapse>
+                <CartWidget />
+            </Container>
+        </Navbar>
+    )
 }
 
-export default NavBar;
+export default NavBar

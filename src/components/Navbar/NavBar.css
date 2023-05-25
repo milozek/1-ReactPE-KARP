@@ -1,0 +1,32 @@
+.nav-container {
+    gap: 8rem;
+}
+.collapse-nav {
+    gap: 4rem;
+}
+
+.regen-brand {
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    color: black;
+    margin-right: 2rem;
+    width: 6rem;
+    height: 6rem;
+    background: url("../../../assets/img/golden-brand.png") no-repeat center;
+}
+.power-red {
+    background: url("../../../assets/img/red-stain-bg-removebg-preview1.png") no-repeat center;
+    padding: 10%;
+    border-radius: 50%;
+}
+.energy-blue {
+    background: url("../../../assets/img/blue-stain-bg-removebg-preview1.png") no-repeat center;
+    border-radius: 50%;
+    padding: 10%;
+}
+.vibe-green {
+    background: url("../../../assets/img/green-stain-bg-removebg-preview1.png") no-repeat center;
+    border-radius: 50%;
+    padding: 10%;
+}
