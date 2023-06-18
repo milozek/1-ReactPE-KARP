@@ -1,8 +1,9 @@
-import { useState, useContext } from "react"
+import { useState, useContext, useEffect } from "react"
 import { CartContext } from "../../context/CartContext"
 import { db } from "../../services/config"
 import { collection, addDoc, updateDoc, doc, getDoc } from "firebase/firestore"
 import "./Checkout.css"
+import Swal from "sweetalert2"
 
 const Checkout = () => {
     const { cart, clearCart, total } = useContext(CartContext)
@@ -64,6 +65,16 @@ const Checkout = () => {
                 setError("An error occurred while updating the stock, please try again later")
             })
     }
+
+    useEffect(() => {
+        if (orderId) {
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: `Thanks for your purchase! Your order number is: ${orderId}`,
+            })
+        }
+    }, [orderId])
 
     return (
         <div>
