@@ -1,8 +1,9 @@
 import "./ItemListContainer.css"
 import ItemList from "../ItemList/ItemList"
 import { useState, useEffect } from "react"
-import { getProducts, getProductsByCategory } from "../../asyncmock"
 import { useParams } from "react-router-dom"
+import { collection, getDocs, where, query } from "firebase/firestore"
+import { db } from "../../services/config"
 
 const ItemListContainer = () => {
     const [products, setProducts] = useState([])
@@ -10,12 +11,21 @@ const ItemListContainer = () => {
     const { idCategory } = useParams()
 
     useEffect(() => {
-        const productsFunction = idCategory ? getProductsByCategory : getProducts
+        const myProducts = idCategory
+            ? query(collection(db, "products"), where("idCat", "==", idCategory))
+            : collection(db, "products")
 
-        productsFunction(idCategory)
-            .then((res) => setProducts(res))
+        getDocs(myProducts)
+            .then((res) => {
+                const newProducts = res.docs.map((doc) => {
+                    const data = doc.data()
+                    return { id: doc.id, ...data }
+                })
+                setProducts(newProducts)
+            })
             .catch((error) => console.error(error))
     }, [idCategory])
+
     return (
         <header>
             <h1>Regen.</h1>

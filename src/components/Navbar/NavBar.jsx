@@ -4,10 +4,6 @@ import Nav from "react-bootstrap/Nav"
 import Navbar from "react-bootstrap/Navbar"
 import NavDropdown from "react-bootstrap/NavDropdown"
 import CartWidget from "../CartWidget/CartWidget"
-// import goldenBrand from "../../../public/assets/img/golden-brand.png"
-/* <img className="regen-brand" src={goldenBrand} alt="Golden Brand" /> */
-/* regen. */
-
 import { NavLink, Link } from "react-router-dom"
 
 function NavBar() {
@@ -20,10 +16,10 @@ function NavBar() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto collapse-nav">
-                        <NavLink to={`/category/2`} className="power-red">
+                        <NavLink to={`/category/1`} className="power-red">
                             power
                         </NavLink>
-                        <NavLink to={`/category/3`} className="energy-blue">
+                        <NavLink to={`/category/2`} className="energy-blue">
                             energy
                         </NavLink>
                         <NavDropdown className="vibe-green" title="vibe" id="basic-nav-dropdown">
